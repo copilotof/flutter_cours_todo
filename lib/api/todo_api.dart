@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:todoapi/data/models/todo.dart';
 
 class TodoApi {
   Future<List<Todo>> getAllTodos() async {
@@ -11,6 +12,7 @@ class TodoApi {
           (json.decode(
             response.body,
           )).map<Todo>((jsonTodo) => Todo.fromJson(jsonTodo)).toList();
+      return todos;
     } catch (e) {
       rethrow;
     }
